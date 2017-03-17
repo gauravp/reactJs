@@ -9,6 +9,9 @@ import {ProductEdit} from "./product/product-edit";
 import Contact from "./contact";
 import Home, {Layout} from "./layout";
 
+import {Calc}  from "./calc";
+import "./promise";
+
 class App extends React.Component {
  
  constructor(props) {
@@ -26,6 +29,7 @@ class App extends React.Component {
           <Route path = "/products/edit/:id" component={ProductEdit}/>
           <Route path = "/about" component={About}/>
           <Route path = "/contact" component={Contact}/>
+          <Route path = "/calc" component={Calc}/>
         </Route>
  
       </Router>

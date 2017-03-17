@@ -143,4 +143,13 @@ React View/Presentation Only
 https://github.com/reactjs/react-redux
 
 Redux :
-https://redux.js.org/docs/introduction/ 
+https://redux.js.org/docs/introduction/
+
+---------------------------------------------------------------------------
+Redux Middleware : 
+http://redux.js.org/docs/advanced/Middleware.html 
+
+-------------------------------------------------------------------------
+http://bluebirdjs.com/docs/getting-started.html
+
+https://www.npmjs.com/package/bluebird
