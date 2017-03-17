@@ -1,0 +1,146 @@
+1. virtual DOM
+2. SPA-introdution
+3. ES6
+4. Tooling.
+5. Components.
+6. Props
+7. States
+8. Promises
+9. Fetch/Http
+
+ES5 -- two type of scope -- global scope and function/local scope.
+
+commonjs spec. - to define nodejs spec.
+
+ES5 -- 2009 old
+ES6 - ECMAScript 2015 - June 2015
+ES7 - June 2016
+
+
+ES6 -- let and const use for define variable 
+		let is equal to var in ES5 
+		const is to define constant
+
+-----------------------------------------------------------------------------------------------
+Example : 
+
+let points = [10,20,30,40];
+for(let i in points){console.log(i)}   /// output : 0,1,2,3
+
+let points = [10,20,30,40];
+for(let i of points){console.log(i)}   /// output : 10,20,30,40
+
+
+function sum(...points); // rest operator multiple arguments can be use at the end of the parameter.
+
+
+spread operator :
+
+let numbers = [1,2,3, ...points];
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator
+
+------------------------------------------------------------------------------------------
+Class
+
+
+class circle{
+	constructor(name){
+		this.name = name;
+	}
+}
+
+------------------------------------------------------------------------------------------
+Fat Arrow Lambda : 
+https://chrisrng.svbtle.com/es6-lambda-expressions
+
+------------------------------------------------------------------------------------------
+Template Literals : 
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals
+
+-----------------------------------------------------------------------------------------
+Modules : similar to package in java 
+	export : class or function any thing that other file can use it in javascript
+
+	import : to import and exported class / function any thing.
+
+	import {Product} from "./product"
+
+	// using alias
+	import {product as producModel} from "./product"
+
+	// or import all with alias
+	import {* as pm} from "./product"
+
+
+links : 
+	es6-feature.org
+
+
+---------------------------------------------------------------------------------------
+Tooling :
+	Transpiling : 
+		ES6 --> Babel Compiler --> ES5 Browsers IE 10,11
+
+source map to debug code ES6 code equvlent to ES5 code.
+
+javascript is single threaded :
+
+nodejs - is just a javascript similar to running to chrome
+NPM - Node Package Manager
+
+NPM Enterpise - To created own repo 			
+
+----------------------------------------------------------------------------------------
+commonJs for browser 
+----------------------------------------------------------------------------------------
+webpack -- webpack is a module bundler.
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+ReactJS :
+
+ "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+
+ ----------------------------------------------------------------------------------
+    JAX -- javascript XML
+
+-------------------------------------------
+React Data binding is 1 way only.
+props are immutable
+state is mutable
+-------------------------------------------------------------------------------------
+Component Life Cycle :
+https://facebook.github.io/react/docs/react-component.html
+
+-------------------------------------------------------------------------------------
+Router :
+
+
+hashHistory 
+http://google.com/wiki#page1
+--------------------------------------------------------------------------------------
+Ajax :
+
+fetch : default ajax lib supported by browser 
+
+ployfill : ajax lib on github
+-----------------------------------------------------------------------------------
+fallback URL : to handle bookmark url / need to modify server to handle this.
+
+HTML5 / BrowerHistiry
+
+http://google.com/wiki/page1
+
+----------------------------------------------------------------------------
+
+Flux : 
+Flux is an architecture that Facebook uses internally when working with React. It is not a framework or a library. It is simply a new kind of architecture that complements React and the concept of Unidirectional Data Flow.
+
+https://facebook.github.io/flux/docs/overview.html
+
+Flux Data Management :
+React View/Presentation Only 
+https://github.com/reactjs/react-redux
+
+Redux :
+https://redux.js.org/docs/introduction/ 
