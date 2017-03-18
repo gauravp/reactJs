@@ -4,33 +4,44 @@ import {Link} from "react-router";
 
 // polyfill std api 
 import 'whatwg-fetch'; 
+import {connect} from "react-redux";
 
-export class ProductList extends React.Component {
+class ProductList extends React.Component {
 
 	constructor(props){
 		super(props);
 
-		this.state = {
+		/*this.state = {
 			products:[]
-		}
+		}*/
 	}	
 
 	componentDidMount(){
-		window.fetch("http://localhost:7070/api/products")
+		this.props.onLoad(true);
+		window.fetch("http://localhost:7070/delayed/api/products")
 		.then(response => response.json())
 		.then(products => {
 			console.log(products);
-			this.setState({
+			this.props.onInit(products);
+			this.props.onLoad(false);
+			/*this.setState({
 				products
-			});
+			});*/
 		})
 	}
 
 	render(){
-			let productsList = this.state.products.map(
+		if(this.props.loading){
+			return <h1><br/>Loading Products </h1>
+		}
+
+
+			let productsList = this.props.products.map(
 				product =>{
 					return <li key={product.id}>
-					<Link to={`/products/edit/${product.id}`}> {product.name}</Link></li>
+					<Link to={`/products/edit/${product.id}`}> {product.name}</Link>
+<button onClick={ () => this.props.onDelete(product.id)} > Delete </button>
+					</li>
 				} )
 		return (
 				<div>
@@ -41,3 +52,32 @@ export class ProductList extends React.Component {
 			)
 	}
 }
+
+let mapStateToProps = (state) => {
+
+	return{
+		products:state.productState.products,
+		loading: state.productState.loading
+	}
+}
+
+let mapDispatchToProps = (dispatch) => {
+	return {
+
+		onInit: (products) => dispatch({
+			type:"INIT",
+			products
+		}),
+
+		onDelete:(id) => dispatch({
+			type:"DELETE_PRODUCT",
+			id
+		}),
+		onLoad : (status) => dispatch({
+			type: "LOADING",
+			status
+		})
+	}
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(ProductList);

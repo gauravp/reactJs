@@ -19,6 +19,7 @@ export class Layout extends React.Component {
 					<Link to="/about">About</Link>
 					<Link to="/contact">Contact</Link>
 					<Link to="/calc">Calc</Link>
+					<Link to="/calculator">Calculator</Link>
 				</nav>
 				<div> 
 					{this.props.children}

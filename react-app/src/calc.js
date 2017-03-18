@@ -34,6 +34,17 @@ function math_reducer(state=initialState, action){
 }
 
 
+function reducer (state=[], action){
+	switch(action.type){
+		case "ADD_TO_CART":{
+			return [...state, action.item]
+		};
+
+		default:
+			return state;
+	}
+}
+
 // middleware 
 const logger = store => next => action => {
   console.group(action.type)
@@ -44,14 +55,22 @@ const logger = store => next => action => {
   return result
 }
 
+import {combineReducers} from "redux";
+let rootReducer = combineReducers({
+
+	math: math_reducer,
+	cart: reducer
+
+})
+
 // store
-let store = createStore(math_reducer, initialState, applyMiddleware(logger));
+let store = createStore(rootReducer, {math: initialState},  applyMiddleware(logger));
 
 
 store.subscribe( () => {
 	console.log("state value subscribe ", store.getState());
 
-	window.localStorage.setItem("sum", store.getState());
+	window.localStorage.setItem("sum", store.getState().math);
 });
 /*
 store.dispatch({
@@ -88,14 +107,14 @@ export class Calc extends React.Component {
 		super(props);
 
 		this.state = {
-			result: store.getState()
+			result: store.getState().math
 		}
 	}
 
 	componentDidMount(){
 		this.unsubscribe = store.subscribe(() => {
 				this.setState({
-					result:store.getState()
+					result:store.getState().math
 				})
 				
 		});
